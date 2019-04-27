@@ -1,0 +1,50 @@
+{
+  "name": "tango",
+  "version": "1.0.0",
+  "description": "Spaced repetition software",
+  "dependencies": {
+    "@types/react": "^16.8.13",
+    "@types/react-dom": "^16.8.4",
+    "@types/webpack": "^4.4.27",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "sqlite3": "^4.0.6"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "css-loader": "^2.1.1",
+    "electron": "^4.1.4",
+    "electron-builder": "^20.39.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^0.23.1",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.4",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0"
+  },
+  "scripts": {
+    "start": "electron dist/main.js",
+    "build": "webpack --config webpack.config.ts --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "install-app-deps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonnyli1125/tango.git"
+  },
+  "author": "Jonny Li",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonnyli1125/tango/issues"
+  },
+  "homepage": "https://github.com/jonnyli1125/tango#readme",
+  "keywords": [
+    "tango",
+    "spaced",
+    "repetition",
+    "srs",
+    "anki"
+  ]
+}
