@@ -1,5 +1,7 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from "path";
+import "reflect-metadata";
+import { createConnection } from "typeorm";
 
 let mainWindow: Electron.BrowserWindow;
 
@@ -16,6 +18,7 @@ function createWindow() {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+  createConnection();
 }
 
 app.on('ready', createWindow)

@@ -1,0 +1,8 @@
+{
+  "type": "sqlite",
+  "database": "tango.sqlite",
+  "logging": true,
+  "entities": [
+    "src/entity/*.js"
+  ]
+}
