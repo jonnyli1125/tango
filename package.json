@@ -33,6 +33,7 @@
     "start": "electron dist/main.js",
     "build": "webpack --config webpack.config.ts --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "node ./scripts/preinstall.js",
     "postinstall": "install-app-deps"
   },
   "repository": {
