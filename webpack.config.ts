@@ -1,6 +1,8 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
 
+const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
+
 const commonConfig: webpack.Configuration = {
   devtool: "source-map",
   resolve: {
@@ -24,17 +26,22 @@ const commonConfig: webpack.Configuration = {
   node: {
     __dirname: false,
     __filename: false,
-  }
+  },
+  plugins: [
+    new FilterWarningsPlugin({
+      exclude: [/mongodb/, /mssql/, /mysql/, /mysql2/, /oracledb/, /pg/, /pg-native/, /pg-query-stream/, /redis/]
+    })
+  ]
 };
 
-const main = Object.assign({
+const mainConfig = Object.assign({
   entry: { main: path.resolve(__dirname, 'src/main-process/main') },
   target: 'electron-main'
 }, commonConfig);
 
-const renderer = Object.assign({
+const rendererConfig = Object.assign({
   entry: { renderer: path.resolve(__dirname, 'src/ui/index') },
   target: 'electron-renderer'
 }, commonConfig);
 
-export default [main, renderer];
+export default [mainConfig, rendererConfig];
