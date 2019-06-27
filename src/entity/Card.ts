@@ -1,27 +1,27 @@
+import { Validate } from "class-validator";
 import {
   Entity,
-  PrimaryGeneratedColumn,
-  ManyToMany,
   JoinTable,
-  ManyToOne
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn
 } from "typeorm";
-import { Field } from "./Field";
-import { Deck } from "./Deck";
-import { Validate } from "class-validator";
 import { UniqueAnswerField } from "../validator/UniqueAnswerField";
+import { Deck } from "./Deck";
+import { Field } from "./Field";
 
 @Entity()
 export class Card {
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
   @ManyToMany(type => Field)
   @JoinTable()
   @Validate(UniqueAnswerField, {
     message: "Card can have only one answer field!"
   })
-  fields: Field[];
+  public fields: Field[];
 
   @ManyToOne(type => Deck, deck => deck.cards)
-  deck: Deck;
+  public deck: Deck;
 }

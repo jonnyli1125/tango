@@ -1,11 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Card } from "./Card";
 
 @Entity()
 export class Deck {
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
   @OneToMany(type => Card, card => card.deck)
-  cards: Card[];
+  public cards: Card[];
 }

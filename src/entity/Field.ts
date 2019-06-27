@@ -1,16 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Field {
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
   @Column()
-  label: string;
+  public label: string;
 
   @Column()
-  value: string;
+  public value: string;
 
   @Column()
-  isAnswer: boolean;
+  public isAnswer: boolean;
 }

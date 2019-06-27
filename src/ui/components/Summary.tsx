@@ -5,8 +5,8 @@ export interface SummaryProps {
   framework: string;
 }
 
-export class Summary extends React.Component<SummaryProps, {}> {
-  render() {
+export class Summary extends React.Component<SummaryProps> {
+  public render() {
     return (
       <h1>
         Hello from {this.props.compiler} and {this.props.framework}!
