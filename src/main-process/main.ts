@@ -31,7 +31,7 @@ function createWindow() {
 
   createConnection({
     database: SQLITE_DATABASE,
-    entities: ["Card", "Deck", "Field"],
+    entities: TYPEORM_ENTITIES, // provided by webpack
     logging: true,
     type: "sqlite"
   });
