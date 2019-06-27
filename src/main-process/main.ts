@@ -1,4 +1,5 @@
 import { app, BrowserWindow } from "electron";
+import * as fs from "fs";
 import * as path from "path";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
@@ -7,6 +8,8 @@ let mainWindow: Electron.BrowserWindow;
 
 const WINDOW_WIDTH = 1280;
 const WINDOW_HEIGHT = 720;
+
+const SQLITE_DATABASE = path.resolve(__dirname, "./tango.sqlite");
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -21,7 +24,17 @@ function createWindow() {
   mainWindow.on("closed", () => {
     mainWindow = null;
   });
-  createConnection();
+
+  if (!fs.existsSync(SQLITE_DATABASE)) {
+    fs.closeSync(fs.openSync(SQLITE_DATABASE, "w"));
+  }
+
+  createConnection({
+    database: SQLITE_DATABASE,
+    entities: ["Card", "Deck", "Field"],
+    logging: true,
+    type: "sqlite"
+  });
 }
 
 app.on("ready", createWindow);
