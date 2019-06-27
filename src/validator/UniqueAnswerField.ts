@@ -1,4 +1,8 @@
-import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
+import {
+  ValidationArguments,
+  ValidatorConstraint,
+  ValidatorConstraintInterface
+} from "class-validator";
 import { Field } from "../entity/Field";
 
 @ValidatorConstraint({ name: "uniqueAnswerField", async: false })

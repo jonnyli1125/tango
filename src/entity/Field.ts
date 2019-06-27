@@ -6,7 +6,7 @@ export class Field {
   id: number;
 
   @Column()
-  label: string
+  label: string;
 
   @Column()
   value: string;

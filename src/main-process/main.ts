@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow } from "electron";
 import * as path from "path";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
@@ -13,19 +13,19 @@ function createWindow() {
       nodeIntegration: true
     }
   });
-  mainWindow.loadFile(path.join(__dirname, '../static/index.html'));
+  mainWindow.loadFile(path.join(__dirname, "../static/index.html"));
   mainWindow.webContents.openDevTools();
-  mainWindow.on('closed', () => {
+  mainWindow.on("closed", () => {
     mainWindow = null;
   });
   createConnection();
 }
 
-app.on('ready', createWindow)
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
+app.on("ready", createWindow);
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") app.quit();
 });
 
-app.on('activate', () => {
+app.on("activate", () => {
   if (mainWindow === null) createWindow();
 });

@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable, ManyToOne } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
+  ManyToOne
+} from "typeorm";
 import { Field } from "./Field";
 import { Deck } from "./Deck";
 import { Validate } from "class-validator";
