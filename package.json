@@ -39,14 +39,14 @@
     "webpack-filter-warnings-plugin": "^1.2.1"
   },
   "scripts": {
-    "build:win": "electron-builder build --win --x64",
-    "build:mac": "electron-builder build --mac --x64",
-    "compile": "webpack --config webpack.config.ts --mode development",
     "start": "electron ./dist/main.js",
-    "preinstall": "node ./scripts/preinstall.js",
-    "postinstall": "electron-builder install-app-deps",
     "clean": "rimraf ./dist",
-    "lint": "concurrently \"tslint 'src/**/*.ts?(x)'\" \"sass-lint -v -q\""
+    "lint": "concurrently \"tslint 'src/**/*.ts?(x)'\" \"sass-lint -v -q\"",
+    "build": "webpack --config webpack.config.ts --mode development",
+    "package:win": "electron-builder build --win --x64",
+    "package:mac": "electron-builder build --mac --x64",
+    "preinstall": "node ./scripts/preinstall.js",
+    "postinstall": "electron-builder install-app-deps"
   },
   "repository": {
     "type": "git",
