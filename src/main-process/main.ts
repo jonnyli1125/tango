@@ -1,17 +1,13 @@
 import { app, BrowserWindow } from "electron";
-import * as fs from "fs";
 import * as path from "path";
-import "reflect-metadata";
-import { createConnection } from "typeorm";
 
 import { IS_OSX } from "./constants/environment";
+import { openDatabase } from "./database";
 
 let mainWindow: Electron.BrowserWindow | null = null;
 
 const WINDOW_WIDTH = 1280;
 const WINDOW_HEIGHT = 720;
-
-const SQLITE_DATABASE = path.resolve(__dirname, "./tango.sqlite");
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -27,16 +23,7 @@ function createWindow() {
     mainWindow = null;
   });
 
-  if (!fs.existsSync(SQLITE_DATABASE)) {
-    fs.closeSync(fs.openSync(SQLITE_DATABASE, "w"));
-  }
-
-  createConnection({
-    database: SQLITE_DATABASE,
-    entities: TYPEORM_ENTITIES, // provided by webpack
-    logging: true,
-    type: "sqlite"
-  });
+  openDatabase();
 }
 
 app.on("ready", createWindow);
