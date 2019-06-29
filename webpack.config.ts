@@ -1,12 +1,9 @@
 /* tslint:disable */
 
-import * as fs from "fs";
 import * as path from "path";
 import * as webpack from "webpack";
 
 const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
-
-const TYPEORM_ENTITIES_DIR = path.resolve(__dirname, "./src/entity");
 
 const commonConfig: webpack.Configuration = {
   devtool: "source-map",
@@ -45,13 +42,6 @@ const commonConfig: webpack.Configuration = {
         /pg-query-stream/,
         /redis/
       ]
-    }),
-    new webpack.DefinePlugin({
-      TYPEORM_ENTITIES: JSON.stringify(
-        fs
-          .readdirSync(TYPEORM_ENTITIES_DIR)
-          .map(filename => path.parse(filename).name)
-      )
     })
   ],
   externals: {
