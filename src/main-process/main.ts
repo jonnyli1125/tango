@@ -4,6 +4,8 @@ import * as path from "path";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
 
+import { IS_OSX } from "./constants/environment";
+
 let mainWindow: Electron.BrowserWindow | null = null;
 
 const WINDOW_WIDTH = 1280;
@@ -39,7 +41,7 @@ function createWindow() {
 
 app.on("ready", createWindow);
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
+  if (!IS_OSX) {
     app.quit();
   }
 });
