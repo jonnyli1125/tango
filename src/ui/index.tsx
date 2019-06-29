@@ -5,12 +5,16 @@ import { Provider } from "react-redux";
 import { createReduxStore } from "./redux/store";
 
 import Summary from "./components/Summary";
+import UserForm from "./components/UserForm";
 
 const store = createReduxStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Summary compiler="TypeScript" framework="React" />
+    <React.Fragment>
+      <Summary compiler="TypeScript" framework="React" />
+      <UserForm />
+    </React.Fragment>
   </Provider>,
   document.getElementById("root")
 );

@@ -1,4 +1,4 @@
-import { SetUserNameAction } from "../action";
+import { SetUserNameAction } from "../actions";
 import { User } from "../index";
 
 type ReducerAction = SetUserNameAction;
