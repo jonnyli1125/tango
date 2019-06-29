@@ -4,7 +4,7 @@ import { User } from "../index";
 type ReducerAction = SetUserNameAction;
 
 const DEFAULT_USER: User = {
-  name: "Unknown"
+  name: null
 };
 
 export default function userReducer(

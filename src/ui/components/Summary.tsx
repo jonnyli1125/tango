@@ -2,6 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import { State } from "../redux";
+import { getLocalization } from "../redux/selectors/settings";
 
 import "./Summary.scss";
 
@@ -11,12 +12,12 @@ interface ProvidedProps {
 }
 
 interface ReduxProps {
-  userName: string;
+  displayUserName: string;
 }
 
 function mapStateToProps(state: State): ReduxProps {
   return {
-    userName: state.user.name
+    displayUserName: state.user.name || getLocalization(state).defaultUserName
   };
 }
 
@@ -24,11 +25,11 @@ type ComponentProps = ProvidedProps & ReduxProps;
 
 class Summary extends React.Component<ComponentProps> {
   public render() {
-    const { compiler, framework, userName } = this.props;
+    const { compiler, framework, displayUserName } = this.props;
     return (
       <div className="summary">
         <h1>
-          Hello <strong>{userName}</strong>, this is from {compiler} and{" "}
+          Hello <strong>{displayUserName}</strong>, this is from {compiler} and{" "}
           {framework}!
         </h1>
       </div>
