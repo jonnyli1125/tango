@@ -1,20 +1,39 @@
 import * as React from "react";
+import { connect } from "react-redux";
+
+import { State } from "../redux";
 
 import "./Summary.scss";
 
-export interface SummaryProps {
+interface ProvidedProps {
   compiler: string;
   framework: string;
 }
 
-export class Summary extends React.Component<SummaryProps> {
+interface ReduxProps {
+  userName: string;
+}
+
+function mapStateToProps(state: State): ReduxProps {
+  return {
+    userName: state.user.name
+  };
+}
+
+type ComponentProps = ProvidedProps & ReduxProps;
+
+class Summary extends React.Component<ComponentProps> {
   public render() {
+    const { compiler, framework, userName } = this.props;
     return (
       <div className="summary">
         <h1>
-          Hello from {this.props.compiler} and {this.props.framework}!
+          Hello <strong>{userName}</strong>, this is from {compiler} and{" "}
+          {framework}!
         </h1>
       </div>
     );
   }
 }
+
+export default connect(mapStateToProps)(Summary);
