@@ -4,7 +4,7 @@ import * as path from "path";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
 
-let mainWindow: Electron.BrowserWindow;
+let mainWindow: Electron.BrowserWindow | null = null;
 
 const WINDOW_WIDTH = 1280;
 const WINDOW_HEIGHT = 720;
